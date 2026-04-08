@@ -1,0 +1,21 @@
+{
+  "name": "cypress-mcp-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "cy:run:spec": "cypress run --spec 'cypress/e2e/login.cy.ts'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "cypress": "^15.13.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  }
+}
