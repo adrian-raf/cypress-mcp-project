@@ -4,16 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run",
-    "cy:run:chrome": "cypress run --browser chrome",
-    "cy:run:spec": "cypress run --spec 'cypress/e2e/login.cy.ts'"
+    "clean": "node -e \"const fs=require('node:fs');fs.rmSync('allure-results',{recursive:true,force:true});fs.rmSync('allure-report',{recursive:true,force:true});\"",
+    "report:generate": "allure generate ./allure-results --clean --output ./allure-report",
+    "report:open": "allure open ./allure-report",
+    "cy:run": "cypress run",
+    "test": "npm run clean && npm run cy:run",
+    "test:chrome": "npm run test -- --browser chrome",
+    "test:positive": "npm run test -- --env grep=@positive,grepFilterSpecs=true",
+    "test:negative": "npm run test -- --env grep=@negative,grepFilterSpecs=true"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@cypress/grep": "^6.0.0",
     "@types/node": "^25.5.2",
+    "allure-commandline": "^2.38.1",
+    "allure-cypress": "^3.7.0",
     "cypress": "^15.13.0",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.2"

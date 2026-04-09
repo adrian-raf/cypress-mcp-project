@@ -7,7 +7,7 @@ describe('PIM Menu Test Scenarios', () => {
     LoginPage.login('Admin', 'admin123');
   });
 
-  it('Should open PIM menu and show employee information page', () => {
+  it('@positive Should open PIM menu and show employee information page', () => {
     PimPage.openPimMenu();
 
     cy.url().should('include', '/pim/viewEmployeeList');
@@ -16,7 +16,7 @@ describe('PIM Menu Test Scenarios', () => {
     PimPage.getAddButton().should('be.visible');
   });
 
-  it('Should perform employee search from PIM page', () => {
+  it('@positive Should perform employee search from PIM page', () => {
     PimPage.openPimMenu();
     PimPage.searchEmployees();
 

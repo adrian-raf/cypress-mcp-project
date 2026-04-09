@@ -7,7 +7,7 @@ describe('Admin Menu Test Scenarios', () => {
     LoginPage.login('Admin', 'admin123');
   });
 
-  it('Should open Admin menu and show core page elements', () => {
+  it('@positive Should open Admin menu and show core page elements', () => {
     AdminPage.openFromDashboard();
 
     cy.url().should('include', '/admin/viewSystemUsers');
@@ -17,7 +17,7 @@ describe('Admin Menu Test Scenarios', () => {
     AdminPage.getResetButton().should('be.visible');
   });
 
-  it('Should search for a user on the Admin page', () => {
+  it('@positive Should search for a user on the Admin page', () => {
     AdminPage.openFromDashboard();
     AdminPage.searchByUsername('Admin');
 

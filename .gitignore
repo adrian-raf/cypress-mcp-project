@@ -31,3 +31,7 @@ public/
 # Temp
 *.tmp
 .cache/
+
+log.txt
+allure-results/
+allure-report/

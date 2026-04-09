@@ -14,7 +14,7 @@ describe('Login Feature Test Scenarios', () => {
     LoginPage.visit();
   });
 
-  it('Should log in successfully with valid credentials', () => {
+  it('@positive Should log in successfully with valid credentials', () => {
     // Action
     LoginPage.login('Admin', 'admin123');
 
@@ -22,7 +22,7 @@ describe('Login Feature Test Scenarios', () => {
     cy.url().should('include', '/dashboard/index');
   });
 
-  it('Should show an error message with invalid credentials', () => {
+  it('@negative Should show an error message with invalid credentials', () => {
     // Action
     LoginPage.login('UserSalah', 'PasswordSalah');
 
@@ -30,7 +30,7 @@ describe('Login Feature Test Scenarios', () => {
     LoginPage.getErrorMessage().should('contain', 'Invalid credentials');
   });
 
-  it('Should log out successfully after login', () => {
+  it('@positive Should log out successfully after login', () => {
     LoginPage.login('Admin', 'admin123');
     cy.url().should('include', '/dashboard/index');
 

@@ -7,7 +7,7 @@ describe('My Info Menu Test Scenarios', () => {
     LoginPage.login('Admin', 'admin123');
   });
 
-  it('Should open My Info and display personal details', () => {
+  it('@positive Should open My Info and display personal details', () => {
     MyInfoPage.openMyInfo();
 
     cy.url().should('include', '/pim/viewPersonalDetails');
@@ -15,7 +15,7 @@ describe('My Info Menu Test Scenarios', () => {
     MyInfoPage.getFirstNameInput().should('be.visible');
   });
 
-  it('Should edit personal details successfully', () => {
+  it('@positive Should edit personal details successfully', () => {
     const timestamp = Date.now();
     const firstName = `Admin${timestamp}`;
     const middleName = 'QA';

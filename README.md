@@ -2,6 +2,8 @@
 
 This repository is an end-to-end test automation project built with Cypress for the OrangeHRM demo application. It uses the Page Object Model pattern so tests stay readable, maintainable, and easy to extend.
 
+All tests are labeled with a type tag, either `positive` or `negative`, and the suite is wired to generate Allure results for reporting.
+
 ## Project Overview
 
 The repository currently covers these core application areas:
@@ -29,12 +31,14 @@ Test cases live in `cypress/e2e`, while UI selectors and user flows are organize
 - My Info access and personal details updates.
 - PIM menu access and employee search.
 - A custom `assertSuccessToast` command for success notification validation.
+- Positive and negative test tags for filtering and Allure reporting.
 
 ## Tech Stack
 
 - Cypress
 - TypeScript
 - Node.js
+- Allure CLI for report generation
 
 ## Requirements
 
@@ -56,22 +60,40 @@ npm install
 
 ## Running Tests Locally
 
-Run the full test suite:
+Run the full test suite (automatically cleans old reports):
 
 ```bash
-npm test
+npm run test
 ```
 
 Run tests in Chrome:
 
 ```bash
-npm run cy:run:chrome
+npm run test:chrome
 ```
 
-Run only the login spec:
+Run only positive tests:
 
 ```bash
-npm run cy:run:spec
+npm run test:positive
+```
+
+Run only negative tests:
+
+```bash
+npm run test:negative
+```
+
+Generate the Allure report:
+
+```bash
+npm run report:generate
+```
+
+Open the generated Allure report:
+
+```bash
+npm run report:open
 ```
 
 ## CI/CD Pipeline
@@ -97,6 +119,10 @@ Current settings include:
 - `baseUrl` pointing to the OrangeHRM demo site.
 - `specPattern` targeting all specs in `cypress/e2e/**/*.cy.ts`.
 - Fixed viewport dimensions for consistent runs.
+- Allure reporting enabled through Cypress config.
+- Tag-based filtering support through `@cypress/grep`.
+
+The support layer registers both the grep plugin and Allure runtime so tagged tests can be filtered and reported consistently.
 
 ## About MCP
 

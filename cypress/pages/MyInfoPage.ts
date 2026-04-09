@@ -49,10 +49,11 @@ class MyInfoPage {
   }
 
   updatePersonalDetails(firstName: string, middleName: string, lastName: string) {
+    cy.get('.oxd-form-loader', { timeout: 10000 }).should('not.exist');
     this.getFirstNameInput().clear().type(firstName);
     this.getMiddleNameInput().clear().type(middleName);
     this.getLastNameInput().clear().type(lastName);
-    this.getPersonalDetailsSaveButton().click();
+    this.getPersonalDetailsSaveButton().scrollIntoView().click();
   }
 }
 

@@ -30,7 +30,19 @@ jobs:
         run: npm ci
 
       - name: Run Cypress tests
-        run: npx cypress run --browser chrome
+        run: npm run test:chrome
+
+      - name: Generate Allure Report
+        if: always()
+        run: npm run report:generate
+
+      - name: Upload Allure Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+          if-no-files-found: ignore
 
       - name: Upload screenshots
         if: always()
